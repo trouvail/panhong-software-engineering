@@ -1,0 +1,77 @@
+@startuml
+
+'-- 定义颜色 --
+skinparam state {
+  BackgroundColor<<User>> LightBlue
+  BackgroundColor<<Admin>> LightGreen
+  BackgroundColor<<Teacher>> LightYellow
+  BackgroundColor<<Exam>> LightCyan
+}
+
+'-- 定义状态 --
+[*] --> Main
+
+state Main {
+  [*] --> Start
+  Start --> UserMenu : Login
+  UserMenu --> Register : Register
+  UserMenu --> ExamMenu : Enroll
+  UserMenu --> ExamResult : Check Result
+  ExamMenu --> Exam : Start Exam
+  Exam --> Exam : Answer Questions
+  Exam --> ExamResult : Submit Exam
+  ExamResult --> UserMenu : Back
+}
+
+state Register {
+  UserMenu : <<User>>\nMenu
+  AdminMenu : <<Admin>>\nMenu
+  TeacherMenu : <<Teacher>>\nMenu
+}
+
+state ExamMenu {
+  Exam : <<Exam>>\nInfo
+}
+
+state ExamResult {
+  UserMenu : <<User>>\nMenu
+  TeacherMenu : <<Teacher>>\nMenu
+}
+
+state UserMenu {
+  ExamMenu : <<Exam>>\nMenu
+  ExamResult : <<Exam>>\nResult
+}
+
+state AdminMenu {
+  Register : <<User>>\nRegister
+}
+
+state TeacherMenu {
+  ExamResult : <<Exam>>\nResult
+}
+
+'-- 定义箭头标签 --
+UserMenu : <<User>>\nMenu
+AdminMenu : <<Admin>>\nMenu
+TeacherMenu : <<Teacher>>\nMenu
+ExamMenu : <<Exam>>\nMenu
+ExamResult : <<Exam>>\nResult
+
+'-- 定义用户操作箭头 --
+Start --> UserMenu : Login
+UserMenu --> Register : Register
+UserMenu --> ExamMenu : Enroll
+UserMenu --> ExamResult : Check Result
+ExamMenu --> Exam : Start Exam
+Exam --> Exam : Answer Questions
+Exam --> ExamResult : Submit Exam
+ExamResult --> UserMenu : Back
+
+'-- 定义管理员操作箭头 --
+Register --> AdminMenu : Admin Login
+
+'-- 定义教师操作箭头 --
+ExamResult --> TeacherMenu : Teacher Login
+
+@enduml

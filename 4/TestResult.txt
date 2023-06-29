@@ -1,0 +1,24 @@
+test_maxProduct (__main__.TestMaxProduct) ... ok
+test_findMaxSubarray (__main__.TestMaxProduct) ... FAIL
+
+======================================================================
+FAIL: test_findMaxSubarray (__main__.TestMaxProduct)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zhouyanlin/Desktop/4/zyl_unittest.py", line 25, in test_findMaxSubarray
+    self.assertEqual(new_zyl.findMaxSubarray([-2, 0, -1]), (0, [0]))
+AssertionError: Tuples differ: (0, [-2, 0]) != (0, [0])
+
+First differing element 1:
+[-2, 0]
+[0]
+
+- (0, [-2, 0])
+?      ----
+
++ (0, [0])
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=1)

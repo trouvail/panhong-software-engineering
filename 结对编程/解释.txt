@@ -1,0 +1,5 @@
+end_game.txt为终局文件
+
+sudoku.txt为解答完的文件
+
+game.txt为生成的游戏文件
